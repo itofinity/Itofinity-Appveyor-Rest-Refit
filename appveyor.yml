@@ -2,6 +2,8 @@ version: 0.1.{build}
 image: Visual Studio 2017 Preview
 build_script:
 - ps: >-
+    .nuget\nuget.exe
+
     .nuget\nuget.exe restore
 
     dotnet build /p:Version=$Env:APPVEYOR_BUILD_VERSION
