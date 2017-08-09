@@ -1,13 +1,14 @@
 version: 0.1.{build}
 image: Visual Studio 2017 Preview
 before_build:
-- cmd: "dir\ntools\\nuget \ntools\\nuget source add -source https://api.nuget.org/v3/index.json -name v3\ntools\\nuget restore"
-build_script:
 - ps: >-
+    .nuget\nuget source add -source https://api.nuget.org/v3/index.json -name v3
+
     .nuget\nuget.exe
 
     .nuget\nuget.exe restore
-
+build_script:
+- ps: >-
     dotnet build /p:Version=$Env:APPVEYOR_BUILD_VERSION
 artifacts:
 - path: src\Itofinity.Appveyor.Rest.Refit\bin\Debug\*.nupkg
