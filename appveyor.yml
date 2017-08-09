@@ -3,6 +3,7 @@ image: Visual Studio 2017 Preview
 build_script:
 - ps: >-
     nuget restore
+    
     dotnet build /p:Version=$Env:APPVEYOR_BUILD_VERSION
 artifacts:
 - path: src\Itofinity.Appveyor.Rest.Refit\bin\Debug\*.nupkg
