@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **EnableSecureVariablesInPullRequests** | **bool?** |  | [optional] 
 **EnableSecureVariablesInPullRequestsFromSameRepo** | **bool?** |  | [optional] 
 **EnableDeploymentInPullRequests** | **bool?** |  | [optional] 
+**SaveBuildCacheInPullRequests** | **bool?** |  | [optional] 
 **RollingBuilds** | **bool?** |  | [optional] 
 **RollingBuildsDoNotCancelRunningBuilds** | **bool?** |  | [optional] 
 **AlwaysBuildClosedPullRequests** | **bool?** |  | [optional] 

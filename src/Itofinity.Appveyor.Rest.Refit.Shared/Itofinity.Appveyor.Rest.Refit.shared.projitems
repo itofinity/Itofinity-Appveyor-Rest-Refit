@@ -11,7 +11,7 @@
     <PropertyGroup>
         <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
         <HasSharedItems>true</HasSharedItems>
-        <SharedGUID>{F2ECC738-FEF1-4366-9277-C4A097B5FBA4}</SharedGUID>
+        <SharedGUID>{381446D6-8A3F-4910-861F-7593AD4F6BBF}</SharedGUID>
     </PropertyGroup>
     <PropertyGroup Label="Configuration">
         <Import_RootNamespace>Itofinity.Appveyor.Rest.Refit</Import_RootNamespace>

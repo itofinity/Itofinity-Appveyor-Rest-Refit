@@ -49,6 +49,7 @@ namespace Itofinity.Appveyor.Rest.Refit.Model
         /// <param name="EnableSecureVariablesInPullRequests">EnableSecureVariablesInPullRequests.</param>
         /// <param name="EnableSecureVariablesInPullRequestsFromSameRepo">EnableSecureVariablesInPullRequestsFromSameRepo.</param>
         /// <param name="EnableDeploymentInPullRequests">EnableDeploymentInPullRequests.</param>
+        /// <param name="SaveBuildCacheInPullRequests">SaveBuildCacheInPullRequests.</param>
         /// <param name="RollingBuilds">RollingBuilds.</param>
         /// <param name="RollingBuildsDoNotCancelRunningBuilds">RollingBuildsDoNotCancelRunningBuilds.</param>
         /// <param name="AlwaysBuildClosedPullRequests">AlwaysBuildClosedPullRequests.</param>
@@ -68,7 +69,7 @@ namespace Itofinity.Appveyor.Rest.Refit.Model
         /// <param name="IgnoreAppveyorYml">IgnoreAppveyorYml.</param>
         /// <param name="CustomYmlName">CustomYmlName.</param>
         /// <param name="Configuration">Configuration (required).</param>
-        public ProjectWithConfiguration(int? ProjectId = default(int?), string Name = default(string), List<Build> Builds = default(List<Build>), RepositoryProvider RepositoryType = default(RepositoryProvider), RepositoryScm RepositoryScm = default(RepositoryScm), string RepositoryName = default(string), string RepositoryBranch = default(string), bool? IsPrivate = default(bool?), bool? SkipBranchesWithoutAppveyorYml = default(bool?), bool? EnableSecureVariablesInPullRequests = default(bool?), bool? EnableSecureVariablesInPullRequestsFromSameRepo = default(bool?), bool? EnableDeploymentInPullRequests = default(bool?), bool? RollingBuilds = default(bool?), bool? RollingBuildsDoNotCancelRunningBuilds = default(bool?), bool? AlwaysBuildClosedPullRequests = default(bool?), string Tags = default(string), NuGetFeed NuGetFeed = default(NuGetFeed), SecurityDescriptor SecurityDescriptor = default(SecurityDescriptor), string VersionFormat = default(string), int? NextBuildNumber = default(int?), string ScheduleCrontabExpression = default(string), RepositoryAuthenticationType RepositoryAuthentication = default(RepositoryAuthenticationType), string RepositoryUsername = default(string), string SshPublicKey = default(string), string WebhookId = default(string), string WebhookUrl = default(string), string StatusBadgeId = default(string), int? BuildPriority = default(int?), bool? IgnoreAppveyorYml = default(bool?), string CustomYmlName = default(string), ProjectConfiguration Configuration = default(ProjectConfiguration))
+        public ProjectWithConfiguration(int? ProjectId = default(int?), string Name = default(string), List<Build> Builds = default(List<Build>), RepositoryProvider RepositoryType = default(RepositoryProvider), RepositoryScm RepositoryScm = default(RepositoryScm), string RepositoryName = default(string), string RepositoryBranch = default(string), bool? IsPrivate = default(bool?), bool? SkipBranchesWithoutAppveyorYml = default(bool?), bool? EnableSecureVariablesInPullRequests = default(bool?), bool? EnableSecureVariablesInPullRequestsFromSameRepo = default(bool?), bool? EnableDeploymentInPullRequests = default(bool?), bool? SaveBuildCacheInPullRequests = default(bool?), bool? RollingBuilds = default(bool?), bool? RollingBuildsDoNotCancelRunningBuilds = default(bool?), bool? AlwaysBuildClosedPullRequests = default(bool?), string Tags = default(string), NuGetFeed NuGetFeed = default(NuGetFeed), SecurityDescriptor SecurityDescriptor = default(SecurityDescriptor), string VersionFormat = default(string), int? NextBuildNumber = default(int?), string ScheduleCrontabExpression = default(string), RepositoryAuthenticationType RepositoryAuthentication = default(RepositoryAuthenticationType), string RepositoryUsername = default(string), string SshPublicKey = default(string), string WebhookId = default(string), string WebhookUrl = default(string), string StatusBadgeId = default(string), int? BuildPriority = default(int?), bool? IgnoreAppveyorYml = default(bool?), string CustomYmlName = default(string), ProjectConfiguration Configuration = default(ProjectConfiguration))
         {
             // to ensure "ProjectId" is required (not null)
             if (ProjectId == null)
@@ -116,6 +117,7 @@ namespace Itofinity.Appveyor.Rest.Refit.Model
             this.EnableSecureVariablesInPullRequests = EnableSecureVariablesInPullRequests;
             this.EnableSecureVariablesInPullRequestsFromSameRepo = EnableSecureVariablesInPullRequestsFromSameRepo;
             this.EnableDeploymentInPullRequests = EnableDeploymentInPullRequests;
+            this.SaveBuildCacheInPullRequests = SaveBuildCacheInPullRequests;
             this.RollingBuilds = RollingBuilds;
             this.RollingBuildsDoNotCancelRunningBuilds = RollingBuildsDoNotCancelRunningBuilds;
             this.AlwaysBuildClosedPullRequests = AlwaysBuildClosedPullRequests;
@@ -222,6 +224,11 @@ namespace Itofinity.Appveyor.Rest.Refit.Model
         /// </summary>
         [DataMember(Name="enableDeploymentInPullRequests", EmitDefaultValue=false)]
         public bool? EnableDeploymentInPullRequests { get; set; }
+        /// <summary>
+        /// Gets or Sets SaveBuildCacheInPullRequests
+        /// </summary>
+        [DataMember(Name="saveBuildCacheInPullRequests", EmitDefaultValue=false)]
+        public bool? SaveBuildCacheInPullRequests { get; set; }
         /// <summary>
         /// Gets or Sets RollingBuilds
         /// </summary>
@@ -345,6 +352,7 @@ namespace Itofinity.Appveyor.Rest.Refit.Model
             sb.Append("  EnableSecureVariablesInPullRequests: ").Append(EnableSecureVariablesInPullRequests).Append("\n");
             sb.Append("  EnableSecureVariablesInPullRequestsFromSameRepo: ").Append(EnableSecureVariablesInPullRequestsFromSameRepo).Append("\n");
             sb.Append("  EnableDeploymentInPullRequests: ").Append(EnableDeploymentInPullRequests).Append("\n");
+            sb.Append("  SaveBuildCacheInPullRequests: ").Append(SaveBuildCacheInPullRequests).Append("\n");
             sb.Append("  RollingBuilds: ").Append(RollingBuilds).Append("\n");
             sb.Append("  RollingBuildsDoNotCancelRunningBuilds: ").Append(RollingBuildsDoNotCancelRunningBuilds).Append("\n");
             sb.Append("  AlwaysBuildClosedPullRequests: ").Append(AlwaysBuildClosedPullRequests).Append("\n");
@@ -484,6 +492,11 @@ namespace Itofinity.Appveyor.Rest.Refit.Model
                     this.EnableDeploymentInPullRequests == other.EnableDeploymentInPullRequests ||
                     this.EnableDeploymentInPullRequests != null &&
                     this.EnableDeploymentInPullRequests.Equals(other.EnableDeploymentInPullRequests)
+                ) && 
+                (
+                    this.SaveBuildCacheInPullRequests == other.SaveBuildCacheInPullRequests ||
+                    this.SaveBuildCacheInPullRequests != null &&
+                    this.SaveBuildCacheInPullRequests.Equals(other.SaveBuildCacheInPullRequests)
                 ) && 
                 (
                     this.RollingBuilds == other.RollingBuilds ||
@@ -627,6 +640,8 @@ namespace Itofinity.Appveyor.Rest.Refit.Model
                     hash = hash * 59 + this.EnableSecureVariablesInPullRequestsFromSameRepo.GetHashCode();
                 if (this.EnableDeploymentInPullRequests != null)
                     hash = hash * 59 + this.EnableDeploymentInPullRequests.GetHashCode();
+                if (this.SaveBuildCacheInPullRequests != null)
+                    hash = hash * 59 + this.SaveBuildCacheInPullRequests.GetHashCode();
                 if (this.RollingBuilds != null)
                     hash = hash * 59 + this.RollingBuilds.GetHashCode();
                 if (this.RollingBuildsDoNotCancelRunningBuilds != null)

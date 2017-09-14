@@ -33,58 +33,30 @@ namespace Itofinity.Appveyor.Rest.Refit.Client
     /// </summary>
     public partial class ApiClient
     {
-        /// <summary>
-        ///     Creates a new instance of the <see cref="ApiClient" /> using the specified Url and auth header
-        /// </summary>
-        /// <param name="url"></param>
-        /// <param name="scheme"></param>
-        /// <param name="token"></param>
-        public ApiClient(string url, string scheme, string token) : this(url, () => { return Task.Run(() => { return new Tuple<string, string>(scheme, token); }); })
+        public ApiClient(HttpClient client)
         {
+            BuildApiClient = RestService.For<IBuildApi>(client);
+
+            CollaboratorApiClient = RestService.For<ICollaboratorApi>(client);
+
+            DeploymentApiClient = RestService.For<IDeploymentApi>(client);
+
+            EnvironmentApiClient = RestService.For<IEnvironmentApi>(client);
+
+            ProjectApiClient = RestService.For<IProjectApi>(client);
+
+            RoleApiClient = RestService.For<IRoleApi>(client);
+
+            UserApiClient = RestService.For<IUserApi>(client);
+
         }
 
-        /// <summary>
-        ///     Creates a new instance of the <see cref="ApiClient" /> using the specified Url
-        /// </summary>
-        /// <param name="url"></param>
         /// <param name="getSchemeAndToken"></param>
-        public ApiClient(string url, Func<Task<Tuple<string, string>>> getSchemeAndToken)
+        public ApiClient(string url, Func<Task<Tuple<string, string>>> getSchemeAndToken) : this(new HttpClient(new AuthenticatedHttpClientHandler(getSchemeAndToken))
+            {
+            BaseAddress = new Uri(url)
+            })
         {
-            BuildApiClient = RestService.For<IBuildApi>(new HttpClient(new AuthenticatedHttpClientHandler(getSchemeAndToken))
-            {
-                BaseAddress = new Uri(url)
-            });
-
-            CollaboratorApiClient = RestService.For<ICollaboratorApi>(new HttpClient(new AuthenticatedHttpClientHandler(getSchemeAndToken))
-            {
-                BaseAddress = new Uri(url)
-            });
-
-            DeploymentApiClient = RestService.For<IDeploymentApi>(new HttpClient(new AuthenticatedHttpClientHandler(getSchemeAndToken))
-            {
-                BaseAddress = new Uri(url)
-            });
-
-            EnvironmentApiClient = RestService.For<IEnvironmentApi>(new HttpClient(new AuthenticatedHttpClientHandler(getSchemeAndToken))
-            {
-                BaseAddress = new Uri(url)
-            });
-
-            ProjectApiClient = RestService.For<IProjectApi>(new HttpClient(new AuthenticatedHttpClientHandler(getSchemeAndToken))
-            {
-                BaseAddress = new Uri(url)
-            });
-
-            RoleApiClient = RestService.For<IRoleApi>(new HttpClient(new AuthenticatedHttpClientHandler(getSchemeAndToken))
-            {
-                BaseAddress = new Uri(url)
-            });
-
-            UserApiClient = RestService.For<IUserApi>(new HttpClient(new AuthenticatedHttpClientHandler(getSchemeAndToken))
-            {
-                BaseAddress = new Uri(url)
-            });
-
         }
 
         /// <inheritdoc />
