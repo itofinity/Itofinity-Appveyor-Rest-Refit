@@ -26,7 +26,7 @@ deploy:
   description: 'Itofinity.Appveyor.Rest.Refit Release'
   auth_token:
     secure: T/du7cromXAzDxL+UmsuAgPBZLXUGCeEFauhkUzpM5XZN+NdZuaCqGSYf5PcdXpp # your encrypted token from GitHub
-  artifact: Package            # upload all NuGet packages to release assets
+  artifact: /Itofinity\.Appveyor\.Rest\.Refit.*\.nupkg/            # upload all NuGet packages to release assets
   draft: false
   prerelease: false
   on:
