@@ -2,9 +2,9 @@ version: 0.1.{build}
 image: Visual Studio 2017 Preview
 before_build:
 - ps: >-
-    .nuget\nuget source add -source https://api.nuget.org/v3/index.json -name v3
+    nuget source add -source https://api.nuget.org/v3/index.json -name v3
 
-    .nuget\nuget.exe restore
+    nuget.exe restore
 build_script:
 - ps: >-
     dotnet build /p:Version=$Env:APPVEYOR_BUILD_VERSION
